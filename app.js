@@ -1,7 +1,7 @@
 const http = require('http');
+const routes=require('./routes');
 
-const server=http.createServer((req,res) => {
-    console.log('Mohit');
-});
+console.log(routes.someText);
+const server=http.createServer(routes.handler);
 
-server.listen(4000);
+server.listen(3000);
