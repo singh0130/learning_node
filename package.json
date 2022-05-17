@@ -1,0 +1,24 @@
+{
+  "name": "learning_node",
+  "version": "1.0.0",
+  "description": "Complete Node Js Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/singh0130/learning_node.git"
+  },
+  "author": "Mohit Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/singh0130/learning_node/issues"
+  },
+  "homepage": "https://github.com/singh0130/learning_node#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
