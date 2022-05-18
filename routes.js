@@ -5,11 +5,25 @@ const requestHandler= (req,res) => {
     const method=req.method;
     if(url==='/')
     {
-        res.write('<html>');
-        res.write('<head><title>Enter Message</title></head>');
-        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>')
-        res.write('</html>');
-        return res.end();
+        const input=[];
+        fs.readFile('message.txt',(err,data) => {
+            if(err)
+            {
+                console.log('Error');
+            }
+            else
+            {
+                input.push(data);
+                const parsedBody=Buffer.concat(input).toString();
+                res.setHeader('Content-Type','text/html');
+                res.write('<html>');
+                res.write('<head><title>My First Page</title></head>');
+                res.write(`<h2>${parsedBody} </h2>`);
+                res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
+                res.write('</html>');
+            }
+            return res.end();
+        });
     }
 
     if(url==='/message' && method==='POST')
@@ -29,12 +43,14 @@ const requestHandler= (req,res) => {
             });
         });
     }
+    /*
     res.setHeader('Content-Type','text/html');
     res.write('<html>');
     res.write('<head><title>My First Page</title></head>');
     res.write('<body><h1>Hello from my Node.js Server!</h1></body>')
     res.write('</html>');
     res.end();
+    */
 };
 
 //module.exports=requestHandler;
