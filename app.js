@@ -9,6 +9,7 @@ const path = require('path');
 const rootDir = require('./util/path');
 const contactusRoutes = require('./routes/contactus');
 const successRoutes = require('./routes/success');
+const e404Controller = require('./controllers/404');
 
 //console.log(routes.someText);
 const app= express();
@@ -34,9 +35,7 @@ app.use(shopRoutes);
 app.use(contactusRoutes);
 app.use(successRoutes);
 
-app.use((req,res,next) => {
-    res.status(404).sendFile(path.join(rootDir, 'views', '404.html'));
-});
+app.use(e404Controller.get404);
 
 //const server=http.createServer(app);
 
